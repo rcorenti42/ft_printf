@@ -2,13 +2,14 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 int		ft_printf(const char *, ...);
-int		ft_putconv(va_list args, const char c);
-int	ft_conv_xX(va_list args, const char c);
-int	ft_conv_s(va_list args, const char c);
-int ft_conv_p(va_list args, const char c);
-int ft_conv_di(va_list args, const char c);
-int	ft_conv_o(va_list args, const char c);
+void	ft_printf_str(va_list *args);
+void	ft_printf_char(va_list *args);
+void	ft_printf_nbr(va_list *args);
+void	ft_printf_ptr(va_list *args);
+char	*ft_reverse(char *str);
 
 #endif

@@ -1,12 +1,7 @@
 #include "libftprintf.h"
 
-int		main(int ac, char **av)
+int	main(void)
 {
-	int	i;
-
-	i = 0;
-	ft_printf("test :\n%d\n", ac);
-	while (++i < ac)
-		ft_printf("%d\n%s\n", i, av[i]);
+	ft_printf("%x %X AZETY %%%%%% %s %d %c %%%d\n", 157, 78, "QWERTY", 15, 'q', 42);
 	return (0);
 }
