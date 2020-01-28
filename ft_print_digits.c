@@ -6,17 +6,17 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:45:43 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 03:31:51 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:22:06 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_print_digits_neg(t_list *list)
 {
 	char	*tmp;
 
-	if (list->out[0] = '-')
+	if (list->out[0] == '-')
 	{
 		tmp = ft_strdup(list->out + 1);
 		free(list->out);
@@ -39,15 +39,16 @@ void	ft_print_digits_prec(t_list *list)
 	{
 		i = list->flag.prec - len;
 		tmp = (char *)malloc(sizeof(char) * (i + 1));
-		if (!tmp)
-			return (NULL);
-		ft_bzero(tmp, (i + 1));
-		while (i-- > 0)
-			tmp[i] = '0';
-		new = ft_strjoin(tmp, list->out);
-		free(tmp);
-		free(list->out);
-		list->out = new;
+		if (tmp)
+		{
+			ft_bzero(tmp, (i + 1));
+			while (i-- > 0)
+				tmp[i] = '0';
+			new = ft_strjoin(tmp, list->out);
+			free(tmp);
+			free(list->out);
+			list->out = new;
+		}
 	}
 }
 
@@ -69,14 +70,14 @@ void	ft_print_digits_width(t_list *list)
 	}
 	else
 		while (list->flag.width - ++i > len)
-			list->ret += (list->flag.zero == 1 ? write(list->fd, "0", 1)) :
+			list->ret += (list->flag.zero == 1 ? write(list->fd, "0", 1) :
 			write(list->fd, " ", 1));
 }
 
 void	ft_print_digits(t_list *list)
 {
 	ft_print_digits_prec(list);
-	else if (list->flag.min)
+	if (list->flag.min)
 	{
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 		ft_print_digits_width(list);

@@ -6,11 +6,11 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 00:25:09 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 05:29:45 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:15:39 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_check_int(t_list *list)
 {
@@ -62,7 +62,7 @@ void	ft_check_ptr(t_list *list)
 		list->out = ft_strdup("\0");
 	else
 		list->out = ft_base(tmp, 16);
-	ft_printf_ptr(list);
+	ft_print_ptr(list);
 }
 
 void	ft_check_hexa(t_list *list, char c)

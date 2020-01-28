@@ -6,11 +6,11 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 03:33:35 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 05:18:40 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:25:23 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_print_null_s(t_list *list)
 {
@@ -39,13 +39,14 @@ void	ft_print_s(t_list *list)
 
 	if (list->flag.prec >= 0 && list->flag.prec < ft_strlen(list->out))
 	{
-		tmp = (char *)malloc(sizeof(char) * (list->flag.prec + 1))
-		if (!tmp)
-			return (NULL);
-		ft_bzero(tmp, list->flag.prec + 1);
-		ft_strncpy(tmp, list->out, list->flag.prec);
-		free(list->out);
-		list->out = tmp;
+		tmp = (char *)malloc(sizeof(char) * (list->flag.prec + 1));
+		if (tmp)
+		{
+			ft_bzero(tmp, list->flag.prec + 1);
+			ft_strncpy(tmp, list->out, list->flag.prec);
+			free(list->out);
+			list->out = tmp;
+		}
 	}
 	if (list->flag.min)
 	{
