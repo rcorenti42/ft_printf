@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   convert.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/27 18:58:08 by rcorenti          #+#    #+#             */
+/*   Updated: 2020/01/28 00:27:24 by rcorenti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_conv_width(t_list *list)
@@ -28,7 +40,18 @@ void	ft_conv_prec(const char *format, t_list *list)
 
 void	ft_conv_spec(const char *format, t_list *list)
 {
-	
+	if (format[list->i] == '%')
+		ft_flag_perc(list);
+	else if (format[list->i] == 'd' || format[list->i] == 'i')
+		ft_check_int(list);
+	else if (format[list->i] == 'u')
+		ft_check_unsigned_int(list);
+	else if (format[list->i] == 'c' || format[list->i] == 's')
+		ft_check_char(list, format[list->i]);
+	else if (format[list->i] == 'p')
+		ft_check_ptr(list);
+	else if (format[list->i] == 'x' || format[list->i] == 'X')
+		ft_check_hexa(list, format[list->i]);
 }
 
 void	ft_conv_flag(const char *format, t_list *list)
