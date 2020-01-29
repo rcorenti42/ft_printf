@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:54 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/27 18:57:57 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/29 03:11:30 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_printf(const char *format, ...)
 	t_list	list;
 
 	list.fd = 1;
+	list.i = 0;
+	list.ret = 0;
 	va_start(list.ap, format);
 	while (format[list.i])
 	{

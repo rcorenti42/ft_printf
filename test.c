@@ -1,10 +1,10 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
 int main()
 {
-	void	*ptr;
+	int i;
 
-	ft_printf("%p", ptr);
+	i = ft_printf("Simple input test");
+	ft_printf("%d", i);
 	return (0);
 }

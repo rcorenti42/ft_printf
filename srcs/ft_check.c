@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 00:25:09 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 22:15:39 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/29 01:55:22 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 void	ft_check_int(t_list *list)
 {
 	int	tmp;
-	int	i;
 
 	tmp = va_arg(list->ap, int);
-	i = tmp;
 	list->flag.min == 1 ? list->flag.zero = 0 : 0;
 	list->flag.prec >= 0 ? list->flag.zero = 0 : 0;
+	list->out = ft_itoa(tmp);
 	ft_print_digits(list);
 }
 
@@ -85,5 +84,5 @@ void	ft_check_hexa(t_list *list, char c)
 		}
 	}
 	list->flag.min == 1 ? list ->flag.zero = 0 : 0;
-	ft_print_hexa(list, c, num);
+	ft_print_hexa(list, c);
 }

@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:43 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 22:14:51 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/29 02:41:34 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # define FLAGS "-.*0123456789"
 
@@ -57,7 +57,7 @@ void			ft_print_digits_neg(t_list *list);
 void			ft_print_digits_prec(t_list *list);
 void			ft_print_digits_width(t_list *list);
 void			ft_print_digits(t_list *list);
-void			ft_print_hexa(t_list *list, char c, int num);
+void			ft_print_hexa(t_list *list, char c);
 void			ft_print_ptr_prec(t_list *list);
 void			ft_print_ptr(t_list *list);
 void			ft_print_null_s(t_list *list);

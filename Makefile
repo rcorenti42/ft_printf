@@ -1,46 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/27 18:47:53 by rcorenti          #+#    #+#              #
-#    Updated: 2020/01/27 23:47:24 by rcorenti         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-FLAG = -Wall -Wextra -Werror
-
 NAME = libftprintf.a
 
+FLAGS = -Wall -Wextra -Werror
+
+DIR_S = srcs
+HEADER = includes
+DIR_O = obj
 LIBFT = libft
 
-SRC = ft_printf.c \
-	flags.c \
-	convert.c \
+SOURCES = ft_printf.c \
+		  convert.c \
+		  ft_check.c \
+		  flags.c \
+		  ft_print_s.c \
+		  ft_print_digits.c \
+		  ft_print_hexa.c \
+		  ft_print_ptr.c \
+		  ft_base.c \
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SOURCES:.c=.o)
+
+SRCS = $(addprefix $(DIR_S)/, $(SOURCES))
+OBJS = $(addprefix $(DIR_O)/, $(OBJ))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJS)
 	@make -C $(LIBFT)
 	@cp libft/libft.a ./$(NAME)
-	@ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
-%.o: %.c
-	@gcc $(FLAG) -c $< -o $@
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	@mkdir -p $(DIR_O)
+	@gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	@rm -f $(OBJ)
-	@make clean $(LIBFT)
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
+	@make clean -C $(LIBFT)
 
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean $(LIBFT)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
-
-.PHONY: all, clean, fclean, re

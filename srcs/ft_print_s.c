@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 03:33:35 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 22:25:23 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/29 01:56:47 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_print_s(t_list *list)
 {
 	char	*tmp;
 
-	if (list->flag.prec >= 0 && list->flag.prec < ft_strlen(list->out))
+	if (list->flag.prec >= 0 && list->flag.prec < (int)ft_strlen(list->out))
 	{
 		tmp = (char *)malloc(sizeof(char) * (list->flag.prec + 1));
 		if (tmp)
@@ -51,7 +51,7 @@ void	ft_print_s(t_list *list)
 	if (list->flag.min)
 	{
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
-		while (list->flag.width-- > ft_strlen(list->out))
+		while (list->flag.width-- > (int)ft_strlen(list->out))
 			list->ret += (list->flag.zero == 1 ?
 			write(list->fd, "0", 1) : write(list->fd, " ", 1));
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
