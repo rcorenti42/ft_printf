@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 05:22:06 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/29 01:54:09 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/30 23:48:28 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,29 @@ static void	ft_print_hexa_width(t_list *list)
 
 void		ft_print_hexa(t_list *list, char c)
 {
+	char	test;
+	test = c;
 	ft_print_hexa_prec(list);
 	if (list->flag.zero)
 	{
-		ft_print_hexa_pref(list, c);
+		//ft_print_hexa_pref(list, c);
 		ft_print_hexa_width(list);
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 	}
 	else if (list->flag.min)
 	{
-		ft_print_hexa_pref(list, c);
+		//ft_print_hexa_pref(list, c);
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 		ft_print_hexa_width(list);
 	}
 	else
 	{
 		ft_print_hexa_width(list);
-		ft_print_hexa_pref(list, c);
+		//ft_print_hexa_pref(list, c);
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 	}
+	if (0 == 1)
+		ft_print_hexa_pref(list, c);
 	list->i++;
 	free(list->out);
 }

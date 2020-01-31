@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:43 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/29 02:41:34 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/30 21:54:00 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 # include "../libft/libft.h"
 
@@ -27,6 +28,7 @@ typedef struct	s_flag
 	int			zero;
 	int			width;
 	int			prec;
+	int			neg;
 }				t_flag;
 
 typedef struct	s_list

@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 00:25:09 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/29 01:55:22 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/30 23:36:23 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_check_unsigned_int(t_list *list)
 	unsigned int	tmp;
 
 	tmp = va_arg(list->ap, unsigned int);
+	list->out = ft_uitoa(tmp);
 	ft_print_digits(list);
 }
 
@@ -66,14 +67,12 @@ void	ft_check_ptr(t_list *list)
 
 void	ft_check_hexa(t_list *list, char c)
 {
-	int	tmp;
-	int	num;
-	int	i;
+	unsigned int	tmp;
+	int				i;
 
-	num = 0;
 	i = 0;
-	tmp = va_arg(list->ap, int);
-	list->out = ft_base((long long)num, 16);
+	tmp = va_arg(list->ap, unsigned int);
+	list->out = ft_base((long long)tmp, 16);
 	if (c == 'x')
 	{
 		while (list->out[i])

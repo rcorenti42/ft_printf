@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 03:33:35 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/29 01:56:47 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/30 02:46:33 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ void	ft_print_s(t_list *list)
 	if (list->flag.min)
 	{
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
+		while (list->flag.width-- > (int)ft_strlen(list->out))
+			list->ret += (list->flag.zero == 1 ?
+			write(list->fd, "0", 1) : write(list->fd, " ", 1));
+		list->ret += write(list->fd, list->out, ft_strlen(list->out));
+	}
+	else
+	{
 		while (list->flag.width-- > (int)ft_strlen(list->out))
 			list->ret += (list->flag.zero == 1 ?
 			write(list->fd, "0", 1) : write(list->fd, " ", 1));

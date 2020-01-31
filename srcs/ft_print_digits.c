@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:45:43 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/29 01:52:01 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/31 04:49:09 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_print_digits_neg(t_list *list)
 		tmp = ft_strdup(list->out + 1);
 		free(list->out);
 		list->out = tmp;
+		list->flag.neg = 1;
 	}
 }
 
@@ -31,7 +32,7 @@ void	ft_print_digits_prec(t_list *list)
 	char	*tmp;
 	char	*new;
 
-	ft_print_digits_neg(list);
+	//ft_print_digits_neg(list);
 	len = ft_strlen(list->out);
 	if (list->flag.prec == 0 && list->out[0] == '0')
 		list->out[0] = '\0';
@@ -74,17 +75,31 @@ void	ft_print_digits_width(t_list *list)
 			write(list->fd, " ", 1));
 }
 
+void	ft_print_sign(t_list *list)
+{
+	if (list->flag.neg == 1)
+		list->ret += write(list->fd, "-", 1);
+}
+
 void	ft_print_digits(t_list *list)
 {
 	ft_print_digits_prec(list);
 	if (list->flag.min)
 	{
+		ft_print_sign(list);
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 		ft_print_digits_width(list);
+	}
+	else if (list->flag.zero)
+	{
+		ft_print_sign(list);
+		ft_print_digits_width(list);
+		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 	}
 	else
 	{
 		ft_print_digits_width(list);
+		ft_print_sign(list);
 		list->ret += write(list->fd, list->out, ft_strlen(list->out));
 	}
 	list->i++;

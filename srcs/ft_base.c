@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:20:49 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 21:38:02 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/30 23:35:22 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ char	*ft_base(long long n, int base)
 	len = 1;
 	n < 0 ? ++len : 0;
 	tmp = n < 0 ? -n : n;
+	tmp = n;
 	while (tmp >= base)
 	{
 		tmp /= base;
-		len++;
+		++len;
 	}
 	if (!(res = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);

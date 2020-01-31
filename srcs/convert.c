@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:58:08 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/28 00:27:24 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/31 04:41:03 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_conv_width(t_list *list)
 
 void	ft_conv_prec(const char *format, t_list *list)
 {
-	if (format[list->i] == '*')
+	if (format[list->i + 1] == '*')
 	{
 		list->flag.prec = va_arg(list->ap, int);
 		list->i += 2;
@@ -81,7 +81,7 @@ void	ft_convert(const char *format, t_list *list)
 	int	j;
 	int num;
 
-	j= 0;
+	j = 0;
 	list->i++;
 	ft_flag(&list->flag);
 	if (format[list->i] >= '0' && format[list->i] <= '9')
