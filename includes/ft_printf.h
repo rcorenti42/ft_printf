@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:57:43 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/02/12 03:36:08 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/02/14 01:25:22 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 # define FLAGS "-.*0123456789"
 

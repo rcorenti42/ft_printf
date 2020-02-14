@@ -6,26 +6,75 @@
 #    By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/29 02:55:15 by rcorenti          #+#    #+#              #
-#    Updated: 2020/01/30 04:18:11 by rcorenti         ###   ########.fr        #
+#    Updated: 2020/02/13 23:41:49 by rcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-SRCS = ft*.c
-HDRS = libft.h
-OBJ = $(SRCS:.c=.o)
+
+FLAGS = -Wall -Wextra -Werror
+
+DIR_S = srcs
+HEADER = includes
+DIR_O = obj
+
+SRC = ft_atoi.c \
+	ft_bzero.c \
+	ft_calloc.c \
+	ft_isalnum.c \
+	ft_isalpha.c \
+	ft_isascii.c \
+	ft_isdigit.c \
+	ft_isprint.c \
+	ft_memccpy.c \
+	ft_memchr.c \
+	ft_memcmp.c \
+	ft_memcpy.c \
+	ft_memmove.c \
+	ft_memset.c \
+	ft_strchr.c \
+	ft_strdup.c \
+	ft_strjoin.c \
+	ft_strlcat.c \
+	ft_strlcpy.c \
+	ft_strlen.c \
+	ft_strncmp.c \
+	ft_strncpy.c \
+	ft_strnstr.c \
+	ft_strrchr.c \
+	ft_substr.c \
+	ft_tolower.c \
+	ft_toupper.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_itoa.c \
+	ft_uitoa.c \
+	ft_strmapi.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
+
+OBJ = $(SRC:.c=.o)
+
+SRCS = $(addprefix $(DIR_S)/, $(SRC))
+OBJS = $(addprefix $(DIR_O)/, $(OBJ))
 
 all: $(NAME)
 
-$(NAME):
-	gcc -Wall -Wextra -Werror -I $(HDRS) -c $(SRCS)
-	ar rc $(NAME) *.o
-	ranlib $(NAME)
+$(NAME): $(OBJS)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	@mkdir -p $(DIR_O)
+	@gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	/bin/rm -f $(OBJ)
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:	fclean all
